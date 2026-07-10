@@ -112,6 +112,39 @@ function Initialize-GitHttpSettings {
     }
 }
 
+function Get-GitCommandOutput {
+    param([string[]]$GitCommandArgs)
+
+    $output = & git @GitCommandArgs 2>&1
+    if ($output -is [System.Array]) {
+        return ($output | ForEach-Object { "$_" }) -join "`n"
+    }
+    return [string]$output
+}
+
+function Get-GitPushFailureHint {
+    param([string]$Output)
+
+    if ($Output -match 'without `workflow` scope') {
+        return "Token is missing the workflow scope. Regenerate a Classic PAT with repo + workflow, or disable GitHub Pages for the first push."
+    }
+    if ($Output -match 'Could not connect to server|Failed to connect|HTTP 408|timeout') {
+        return "Cannot reach GitHub (network timeout). Check VPN/proxy or retry on a stable network."
+    }
+    if ($Output -match 'remote rejected') {
+        return "GitHub rejected the push. See the remote error details below."
+    }
+    return "Push failed. Check Token scopes (repo + workflow), network, or run git push manually in PowerShell."
+}
+
+function Test-GitPushRetryable {
+    param([string]$Output)
+    if ($Output -match 'without `workflow` scope|remote rejected') {
+        return $false
+    }
+    return $true
+}
+
 function Invoke-GitPushWithRetry {
     param(
         [Parameter(Mandatory = $true)]
@@ -119,11 +152,23 @@ function Invoke-GitPushWithRetry {
         [int]$MaxAttempts = 3
     )
 
+    $lastOutput = ""
     for ($attempt = 1; $attempt -le $MaxAttempts; $attempt++) {
         Write-Step "Pushing to GitHub (attempt $attempt/$MaxAttempts) ..."
-        & git @PushArgs
+        $lastOutput = Get-GitCommandOutput -GitCommandArgs $PushArgs
         if ($LASTEXITCODE -eq 0) {
+            if ($lastOutput) {
+                Write-Host $lastOutput
+            }
             return
+        }
+
+        if ($lastOutput) {
+            Write-Host $lastOutput
+        }
+
+        if (-not (Test-GitPushRetryable $lastOutput)) {
+            break
         }
 
         if ($attempt -lt $MaxAttempts) {
@@ -132,7 +177,30 @@ function Invoke-GitPushWithRetry {
         }
     }
 
-    throw "git $($PushArgs -join ' ') failed after $MaxAttempts attempts. This is usually a network timeout (HTTP 408). Try VPN/stable network, or run 'git push' manually in PowerShell."
+    $hint = Get-GitPushFailureHint $lastOutput
+    throw "$hint`n`n$lastOutput"
+}
+
+function Unstage-GitHubWorkflowForCommit {
+    $workflowPath = ".github/workflows/pages.yml"
+    if (-not (Test-Path $workflowPath)) {
+        return
+    }
+    git reset HEAD $workflowPath 2>$null | Out-Null
+}
+
+function Remove-WorkflowFromHeadCommitIfNeeded {
+    $workflowPath = ".github/workflows/pages.yml"
+    $tracked = git ls-files --stage $workflowPath 2>$null
+    if (-not $tracked) {
+        return
+    }
+
+    Write-Step "Removing workflow file from the site commit (will push it separately with workflow scope) ..."
+    git rm --cached --force $workflowPath 2>$null | Out-Null
+    if ($LASTEXITCODE -eq 0) {
+        git commit --amend --no-edit
+    }
 }
 
 if ($CreateRepo) {
@@ -196,6 +264,7 @@ if ($remotes -contains "origin") {
 Write-Step "Staging and committing files ..."
 Invoke-Git add .
 git add -u 2>$null | Out-Null
+Unstage-GitHubWorkflowForCommit
 $status = git status --porcelain
 if ($status) {
     Invoke-Git commit -m "feat: Voka homepage ver01_0704 - site update"
@@ -203,8 +272,10 @@ if ($status) {
     Write-Step "No local changes, skipping commit"
 }
 
+Remove-WorkflowFromHeadCommitIfNeeded
+
 Initialize-GitHttpSettings
-Write-Step "Pushing to origin/main ..."
+Write-Step "Pushing site to origin/main ..."
 Invoke-GitPushWithRetry -PushArgs @("push", "-u", "origin", "main", "--force")
 
 if ($EnablePages) {
@@ -253,7 +324,14 @@ jobs:
     Invoke-Git add .github/workflows/pages.yml
     git commit -m "ci: add GitHub Pages workflow for ver01_0704 site" 2>$null | Out-Null
     if ($LASTEXITCODE -eq 0) {
-        Invoke-GitPushWithRetry -PushArgs @("push", "origin", "main")
+        try {
+            Invoke-GitPushWithRetry -PushArgs @("push", "origin", "main") -MaxAttempts 1
+        } catch {
+            Write-Host ""
+            Write-Host "Site code was pushed, but GitHub Pages workflow was not uploaded." -ForegroundColor Yellow
+            Write-Host $_.Exception.Message -ForegroundColor Yellow
+            Write-Host "Add 'workflow' scope to your Token, then sync again with Pages enabled." -ForegroundColor Yellow
+        }
     }
 
     $ghAvailable = $null -ne (Get-Command gh -ErrorAction SilentlyContinue)

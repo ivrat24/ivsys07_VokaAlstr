@@ -201,7 +201,7 @@
           填写 GitHub 账号信息以同步并发布站点。
           <strong>注意：</strong>Git 操作需使用
           <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Personal Access Token</a>
-          （勾选 <code>repo</code> 权限），密码栏请填入 Token。
+          （Classic Token 请勾选 <code>repo</code>；若启用 GitHub Pages 还需勾选 <code>workflow</code>），密码栏请填入 Token。
         </p>
 
         <label class="field">
@@ -226,7 +226,7 @@
 
         <label class="field checkbox-field">
           <input type="checkbox" id="gh-enable-pages" name="enablePages" checked>
-          <span>启用 GitHub Pages（从 main 分支根目录发布）</span>
+          <span>启用 GitHub Pages（需 Token 含 workflow 权限；Actions 部署站点）</span>
         </label>
 
         <div id="sync-status" class="sync-status" role="status" aria-live="polite"></div>

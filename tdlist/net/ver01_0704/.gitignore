@@ -6,3 +6,9 @@ sync/*.local.json
 
 # 本地预览
 .sync-server.pid
+
+# 构建产物与依赖
+node_modules/
+.venv-rl-course/
+site/js/live2d-inline.js
+site/js/site-offline.bundle.js

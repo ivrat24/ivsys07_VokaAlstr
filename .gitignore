@@ -1,6 +1,12 @@
 # N.E.K.O. 完整发行包体积过大，不纳入版本控制
 raw_src/neko/
 
+# 本地构建产物 / 依赖（GitHub Pages 不需要）
+tdlist/net/ver01_0704/sync/node_modules/
+tdlist/net/ver01_0704/.venv-rl-course/
+tdlist/net/ver01_0704/site/js/live2d-inline.js
+tdlist/net/ver01_0704/site/js/site-offline.bundle.js
+
 # 系统与编辑器
 .DS_Store
 Thumbs.db

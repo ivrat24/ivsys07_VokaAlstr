@@ -82,6 +82,40 @@ function Test-RepositoryAlreadyExistsMessage {
     return $Message -match 'already exists|Repository creation failed|name already exists'
 }
 
+function Format-NativeCommandOutput {
+    param($Output)
+
+    if ($null -eq $Output) {
+        return ""
+    }
+
+    $lines = @($Output) | ForEach-Object {
+        if ($_ -is [System.Management.Automation.ErrorRecord]) {
+            $_.ToString()
+        } else {
+            [string]$_
+        }
+    }
+
+    return ($lines -join "`n")
+}
+
+function Invoke-NativeGit {
+    param([string[]]$GitCommandArgs)
+
+    $previousErrorAction = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    try {
+        $output = & git @GitCommandArgs 2>&1
+        return @{
+            ExitCode = $LASTEXITCODE
+            Output = Format-NativeCommandOutput $output
+        }
+    } finally {
+        $ErrorActionPreference = $previousErrorAction
+    }
+}
+
 function Invoke-Git {
     [CmdletBinding()]
     param(
@@ -93,9 +127,12 @@ function Invoke-Git {
         throw "Invoke-Git requires git arguments"
     }
 
-    & git @GitCommandArgs
-    if ($LASTEXITCODE -ne 0) {
-        throw "git $($GitCommandArgs -join ' ') failed (exit $LASTEXITCODE)"
+    $result = Invoke-NativeGit -GitCommandArgs $GitCommandArgs
+    if ($result.Output) {
+        Write-Host $result.Output
+    }
+    if ($result.ExitCode -ne 0) {
+        throw "git $($GitCommandArgs -join ' ') failed (exit $($result.ExitCode))"
     }
 }
 
@@ -115,11 +152,8 @@ function Initialize-GitHttpSettings {
 function Get-GitCommandOutput {
     param([string[]]$GitCommandArgs)
 
-    $output = & git @GitCommandArgs 2>&1
-    if ($output -is [System.Array]) {
-        return ($output | ForEach-Object { "$_" }) -join "`n"
-    }
-    return [string]$output
+    $result = Invoke-NativeGit -GitCommandArgs $GitCommandArgs
+    return $result.Output
 }
 
 function Get-GitPushFailureHint {
@@ -155,8 +189,9 @@ function Invoke-GitPushWithRetry {
     $lastOutput = ""
     for ($attempt = 1; $attempt -le $MaxAttempts; $attempt++) {
         Write-Step "Pushing to GitHub (attempt $attempt/$MaxAttempts) ..."
-        $lastOutput = Get-GitCommandOutput -GitCommandArgs $PushArgs
-        if ($LASTEXITCODE -eq 0) {
+        $result = Invoke-NativeGit -GitCommandArgs $PushArgs
+        $lastOutput = $result.Output
+        if ($result.ExitCode -eq 0) {
             if ($lastOutput) {
                 Write-Host $lastOutput
             }

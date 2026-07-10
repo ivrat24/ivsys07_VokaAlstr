@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "source": "static/music",
+  "tracks": [
+    {
+      "file": "rest.mp3",
+      "title": "rest",
+      "artist": ""
+    }
+  ]
+}

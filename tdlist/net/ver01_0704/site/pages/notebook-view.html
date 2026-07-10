@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jupyter Notebook 阅读 — Alstr（Call Sign ☘ VLinv）">
+  <title>Notebook · Alstr（Call Sign ☘ VLinv）</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <img class="page-bg-image" src="../static/image/image01.jpg" alt="">
+    <div class="page-bg-overlay"></div>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="主导航">
+      <a class="nav-brand" href="../index.html">
+        <span class="nav-brand-text">Alstr<span class="call-sign">（Call Sign ☘ VLinv）</span></span>
+        <span class="nav-version">v0.10.0</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="course.html" class="is-active">课程</a></li>
+        <li><a href="agent-lab.html">智能体试验</a></li>
+        <li><a href="virtual-arrange.html">虚拟编曲</a></li>
+        <li><a href="mouse-diary.html">鼠の事件簿</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon btn-icon--trail is-active" id="cursor-trail-toggle" type="button" aria-label="关闭红叶李拖尾效果" aria-pressed="true" title="红叶李拖尾：开">✿</button>
+        <button class="btn-icon" id="theme-toggle" type="button" aria-label="切换主题" title="切换主题">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-layout module-page notebook-page">
+    <nav class="breadcrumb" aria-label="面包屑">
+      <a href="../index.html">首页</a>
+      <span aria-hidden="true">/</span>
+      <a href="course.html">课程</a>
+      <span aria-hidden="true">/</span>
+      <a id="notebook-breadcrumb-course" href="course.html">…</a>
+      <span aria-hidden="true">/</span>
+      <span id="notebook-breadcrumb-file">…</span>
+    </nav>
+
+    <header class="module-header module-header--course">
+      <span class="module-icon" aria-hidden="true">📓</span>
+      <div>
+        <h1 id="notebook-view-title">Notebook</h1>
+        <p class="muted">Jupyter Notebook 阅读视图</p>
+      </div>
+    </header>
+
+    <div class="notebook-page-actions">
+      <a class="btn btn-ghost btn-sm" id="notebook-download-btn" href="#" download>下载 .ipynb</a>
+      <a class="btn btn-ghost btn-sm" id="notebook-back-link" href="course.html">← 返回课程</a>
+    </div>
+
+    <div id="notebook-view-body" class="notebook-view-body">
+      <p class="muted">加载中…</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Alstr（Call Sign ☘ VLinv）· v0.10.0</p>
+  </footer>
+
+  <script src="../js/boot.js" data-page="notebook-view"></script>
+</body>
+</html>

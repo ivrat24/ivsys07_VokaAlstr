@@ -1,0 +1,243 @@
+/* PDF 专用样式：仅作用于 .note-pdf-export，不污染页面 :root */
+.note-pdf-export {
+  --bg: #ffffff;
+  --text: #152033;
+  --text-muted: #5a6f88;
+  --text-primary: #152033;
+  --text-secondary: #3a4d66;
+  --accent: #7b8fe8;
+  --accent-soft: rgba(123, 143, 232, 0.14);
+  --border: rgba(123, 143, 232, 0.22);
+  --border-box: rgba(123, 143, 232, 0.38);
+  --border-box-soft: rgba(180, 195, 255, 0.52);
+  --note-module-bg: rgba(248, 250, 255, 0.96);
+  --note-module-border: rgba(123, 143, 232, 0.32);
+  --note-heading-bg: rgba(123, 143, 232, 0.12);
+  --note-heading-border: rgba(123, 143, 232, 0.35);
+  --radius: 16px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --font: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+
+  box-sizing: border-box;
+  width: 794px;
+  max-width: 794px;
+  padding: 28px 32px 36px;
+  background: #ffffff;
+  color: #152033;
+  font-family: var(--font);
+}
+
+.note-pdf-export .note-article-head h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.55rem;
+  color: #152033;
+}
+
+.note-pdf-export .note-body--optimized {
+  font-size: 1rem;
+  line-height: 1.85;
+  letter-spacing: 0.015em;
+  text-align: left;
+  color: #152033;
+}
+
+.note-pdf-export .note-module {
+  margin: 0 0 0.85rem;
+  padding: 1rem 1.15rem 1.2rem;
+  border: 1px solid var(--note-module-border);
+  border-radius: var(--radius);
+  background: var(--note-module-bg);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
+}
+
+.note-pdf-export .note-rat-divider {
+  width: 100%;
+  height: 0.55rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  clear: both;
+}
+
+.note-pdf-export .note-body--optimized > .note-paragraph:first-of-type {
+  font-size: 1.03rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+}
+
+.note-pdf-export .note-heading {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  font-weight: 650;
+  line-height: 1.42;
+  color: #152033;
+  border-style: solid;
+  border-color: var(--note-heading-border);
+  background: var(--note-heading-bg);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+}
+
+.note-pdf-export h2.note-heading {
+  margin: 1.5rem 0 0.95rem;
+  padding: 0.62rem 1.05rem;
+  border-width: 2px;
+  border-radius: 14px;
+  font-size: 1.25rem;
+}
+
+.note-pdf-export h3.note-heading {
+  margin: 1.25rem 0 0.72rem;
+  padding: 0.48rem 0.9rem;
+  border-width: 1.5px;
+  border-radius: var(--radius-md);
+  font-size: 1.08rem;
+}
+
+.note-pdf-export h4.note-heading {
+  margin: 1rem 0 0.55rem;
+  padding: 0.38rem 0.75rem;
+  border-width: 1px;
+  border-radius: var(--radius-sm);
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.note-pdf-export .note-paragraph {
+  margin: 0 0 1rem;
+  color: #152033;
+}
+
+.note-pdf-export .note-list {
+  margin: 0.25rem 0 1.05rem;
+  padding-left: 1.4rem;
+  color: #152033;
+}
+
+.note-pdf-export ol.note-list {
+  list-style: decimal;
+  padding-left: 1.65rem;
+}
+
+.note-pdf-export ol.note-list li {
+  list-style: decimal;
+}
+
+.note-pdf-export .note-list li {
+  line-height: 1.78;
+}
+
+.note-pdf-export .note-list li + li {
+  margin-top: 0.42rem;
+}
+
+.note-pdf-export .note-paragraph strong,
+.note-pdf-export .note-list strong {
+  color: #1a2840;
+  font-weight: 650;
+}
+
+.note-pdf-export .note-table-wrap {
+  overflow-x: auto;
+  margin: 0.85rem 0 1.15rem;
+  border-radius: var(--radius-md);
+}
+
+.note-pdf-export .note-table {
+  width: 100%;
+  min-width: 16rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--note-module-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  background: #ffffff;
+  color: #152033;
+}
+
+.note-pdf-export .note-table th,
+.note-pdf-export .note-table td {
+  padding: 0.58rem 0.78rem;
+  border-bottom: 1px solid var(--border-box-soft);
+  border-right: 1px solid var(--border-box-soft);
+  vertical-align: top;
+  text-align: left;
+  color: #152033;
+}
+
+.note-pdf-export .note-table th {
+  background: rgba(123, 143, 232, 0.12);
+  font-weight: 650;
+}
+
+.note-pdf-export .note-table tr:last-child td {
+  border-bottom: none;
+}
+
+.note-pdf-export .note-table th:last-child,
+.note-pdf-export .note-table td:last-child {
+  border-right: none;
+}
+
+.note-pdf-export .note-table tbody tr:nth-child(even) td {
+  background: rgba(123, 143, 232, 0.05);
+}
+
+.note-pdf-export .note-quote {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid #60a5fa;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: rgba(96, 165, 250, 0.08);
+  color: #152033;
+}
+
+.note-pdf-export .note-code-block {
+  margin: 1rem 0;
+}
+
+.note-pdf-export .note-math-figure,
+.note-pdf-export .note-math-block {
+  margin: 1.15rem 0;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  text-align: center;
+  background: rgba(123, 143, 232, 0.08);
+  border-radius: var(--radius-sm);
+}
+
+.note-pdf-export .note-math-block .katex-display {
+  margin: 0;
+}
+
+.note-pdf-export .note-math-inline .katex {
+  font-size: 1.05em;
+}
+
+.note-pdf-export pre {
+  overflow-x: auto;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  color: #152033;
+}
+
+.note-pdf-export .note-heading,
+.note-pdf-export .note-table-wrap,
+.note-pdf-export .note-math-block {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.note-pdf-export a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.note-pdf-export .katex {
+  color: #152033;
+}

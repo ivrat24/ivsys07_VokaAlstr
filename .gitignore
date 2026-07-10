@@ -1,0 +1,18 @@
+# N.E.K.O. 完整发行包体积过大，不纳入版本控制
+raw_src/neko/
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# 凭据
+.env
+**/.credentials
+**/sync/*.local.json
+
+# 日志
+*.log
+debug.log

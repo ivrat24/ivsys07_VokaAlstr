@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "generatedAt": "2026-07-07T19:36:12",
+  "contentDir": "note_content",
+  "courses": [],
+  "materials": [
+    {
+      "course": "短学期02_强化学习与智能体实训",
+      "filename": "exp1_gymnasium_intro.ipynb",
+      "path": "note_content/短学期02_强化学习与智能体实训/materials/exp1_gymnasium_intro.ipynb",
+      "size": 709674
+    },
+    {
+      "course": "短学期02_强化学习与智能体实训",
+      "filename": "exp1_mujoco_warp_intro.ipynb",
+      "path": "note_content/短学期02_强化学习与智能体实训/materials/exp1_mujoco_warp_intro.ipynb",
+      "size": 242506
+    }
+  ],
+  "notes": []
+}

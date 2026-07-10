@@ -1,0 +1,16 @@
+# 短学期 RL 实验环境（exp1 Gymnasium + exp2 Q-learning/SARSA）
+# Python >= 3.10；当前机器使用 3.13 venv
+
+numpy>=1.26
+matplotlib>=3.8
+ipython>=8.0
+gymnasium[classic-control]>=1.0
+ipykernel>=6.29
+jupyterlab>=4.0
+notebook>=7.0
+Pillow>=10.0
+
+# 可选：exp1 MuJoCo 实验（Windows 上 mujoco-warp 需 NVIDIA GPU + CUDA）
+# mujoco>=3.0
+# mujoco-warp
+# warp-lang

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="课程详情 — Alstr（Call Sign ☘ VLinv）">
+  <title>课程 · Alstr（Call Sign ☘ VLinv）</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <img class="page-bg-image" src="../static/image/image01.jpg" alt="">
+    <div class="page-bg-overlay"></div>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="主导航">
+      <a class="nav-brand" href="../index.html">
+        <span class="nav-brand-text">Alstr<span class="call-sign">（Call Sign ☘ VLinv）</span></span>
+        <span class="nav-version">v0.10.0</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="course.html" class="is-active">课程</a></li>
+        <li><a href="agent-lab.html">智能体试验</a></li>
+        <li><a href="virtual-arrange.html">虚拟编曲</a></li>
+        <li><a href="mouse-diary.html">鼠の事件簿</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon btn-icon--trail is-active" id="cursor-trail-toggle" type="button" aria-label="关闭红叶李拖尾效果" aria-pressed="true" title="红叶李拖尾：开">✿</button>
+        <button class="btn-icon" id="theme-toggle" type="button" aria-label="切换主题" title="切换主题">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-layout module-page">
+    <nav class="breadcrumb" aria-label="面包屑">
+      <a href="../index.html">首页</a>
+      <span aria-hidden="true">/</span>
+      <a href="course.html">课程</a>
+      <span aria-hidden="true">/</span>
+      <span id="course-detail-breadcrumb-name">…</span>
+    </nav>
+
+    <header class="module-header module-header--course">
+      <span class="module-icon" aria-hidden="true"><img class="flower-icon flower-icon--lg" src="../static/icons/flower-course.svg" alt=""></span>
+      <div>
+        <h1 id="course-detail-title">课程</h1>
+        <p class="muted" id="course-detail-meta">加载中…</p>
+      </div>
+    </header>
+
+    <section class="module-section course-materials-panel" id="course-materials-section">
+      <details class="course-materials-details" id="course-materials-details">
+        <summary class="course-materials-collapse" id="course-materials-toggle" aria-controls="course-materials-body">
+          <span class="course-materials-collapse__icon" aria-hidden="true"></span>
+          <span class="course-materials-collapse__text">
+            <span class="course-materials-collapse__title">课程文件</span>
+            <span class="course-materials-collapse__desc muted">PDF、Notebook（.ipynb）、ZIP（.zip）、文档等附件</span>
+            <span class="course-materials-collapse__meta muted" id="course-materials-summary">加载中…</span>
+          </span>
+        </summary>
+        <div class="course-materials-panel__body" id="course-materials-body">
+          <div class="course-materials-panel__toolbar local-only">
+            <input type="file" id="course-materials-file-input" hidden>
+            <button type="button" class="btn btn-ghost btn-sm" id="course-materials-connect-btn" hidden>连接 note_content</button>
+            <button type="button" class="btn btn-primary btn-sm" id="course-materials-upload-btn">上传资料</button>
+            <button type="button" class="btn btn-ghost btn-sm course-materials-collapse-btn" id="course-materials-collapse-btn">收起</button>
+          </div>
+          <p class="course-materials-storage-hint muted local-only" id="course-materials-storage-hint"></p>
+          <p class="course-materials-status muted" id="course-materials-status" role="status" aria-live="polite"></p>
+          <div class="course-materials-list" id="course-materials-list">
+            <p class="course-materials-empty muted">加载中…</p>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section class="module-section">
+      <h2>课程笔记</h2>
+      <p class="published-only note-readonly-hint muted">点击笔记卡片进入单课页面，可阅读与下载 PDF。</p>
+      <div id="course-detail-notes" class="note-index">
+        <p class="muted">加载中…</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Alstr（Call Sign ☘ VLinv）· v0.10.0</p>
+  </footer>
+
+  <script src="../js/boot.js" data-page="course-detail"></script>
+</body>
+</html>

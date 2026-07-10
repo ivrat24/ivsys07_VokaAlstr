@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="课程笔记 — Alstr（Call Sign ☘ VLinv）">
+  <title>课程笔记 · Alstr（Call Sign ☘ VLinv）</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="prefetch" href="../index.html">
+  <link rel="prefetch" href="agent-lab.html">
+  <link rel="prefetch" href="virtual-arrange.html">
+  <link rel="prefetch" href="mouse-diary.html">
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <img class="page-bg-image" src="../static/image/image01.jpg" alt="">
+    <div class="page-bg-overlay"></div>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="主导航">
+      <a class="nav-brand" href="../index.html">
+        <span class="nav-brand-text">Alstr<span class="call-sign">（Call Sign ☘ VLinv）</span></span>
+        <span class="nav-version">v0.10.0</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="course.html" class="is-active">课程</a></li>
+        <li><a href="agent-lab.html">智能体试验</a></li>
+        <li><a href="virtual-arrange.html">虚拟编曲</a></li>
+        <li><a href="mouse-diary.html">鼠の事件簿</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon btn-icon--trail is-active" id="cursor-trail-toggle" type="button" aria-label="关闭红叶李拖尾效果" aria-pressed="true" title="红叶李拖尾：开">✿</button>
+        <button class="btn-icon" id="theme-toggle" type="button" aria-label="切换主题" title="切换主题">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-layout module-page">
+    <nav class="breadcrumb" aria-label="面包屑">
+      <a href="../index.html">首页</a>
+      <span aria-hidden="true">/</span>
+      <span>课程笔记</span>
+    </nav>
+
+    <header class="module-header module-header--course">
+      <span class="module-icon" aria-hidden="true"><img class="flower-icon flower-icon--lg" src="../static/icons/flower-course.svg" alt=""></span>
+      <div>
+        <h1>课程笔记</h1>
+        <p>Quartz 风格笔记区：双击本站点 HTML 即可本地编辑；发布到 GitHub 后访客只读。</p>
+      </div>
+    </header>
+
+    <section id="note-editor" class="module-section note-editor-section local-only">
+      <div class="section-head note-editor-section-head">
+        <div>
+          <h2>新建笔记文件夹 / 文档</h2>
+          <p class="section-lead muted">Obsidian 风格 Markdown 编辑：分栏预览、Frontmatter、保存至 <code>note_content/</code>。</p>
+        </div>
+        <button type="button" class="btn btn-primary" id="note-editor-open-btn" aria-expanded="false">打开笔记工作区</button>
+      </div>
+      <div id="note-editor-root" class="note-editor-root" hidden></div>
+    </section>
+
+    <section class="module-section">
+      <h2>课程列表</h2>
+      <p class="published-only note-readonly-hint muted">先进入课程文件夹，再打开各课笔记；资料文件可在课程页下载。</p>
+      <div id="course-note-index" class="note-index">
+        <p class="muted">加载中…</p>
+      </div>
+    </section>
+
+    <section class="module-section">
+      <h2>工作流</h2>
+      <div class="content-card">
+        <ol class="module-list module-list--ordered">
+          <li><strong>双击</strong> <code>site/index.html</code> 打开站点（需先运行 <code>python sync/build-all.py</code>）</li>
+          <li>进入「课程」→「打开笔记工作区」→ 连接 <code>site/note_content</code> 文件夹</li>
+          <li>新建 / 编辑笔记，<kbd>Ctrl+S</kbd> 保存到本地文件夹</li>
+          <li>保存后运行 <code>python sync/build-all.py</code> 更新索引，再上传 GitHub</li>
+        </ol>
+        <ul class="module-list">
+          <li><span class="zone-status zone-status--active">已启用</span> 双击 HTML 本地编辑 + 保存</li>
+          <li><span class="zone-status zone-status--active">已启用</span> 线上只读 + PDF 下载</li>
+          <li><span class="zone-status zone-status--active">已启用</span> Quartz 风格 frontmatter + 静态页生成</li>
+          <li><span class="zone-status zone-status--planned">规划中</span> 标签筛选与全文检索</li>
+          <li><span class="zone-status zone-status--planned">规划中</span> 知识图谱视图</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Alstr（Call Sign ☘ VLinv）· v0.10.0</p>
+  </footer>
+
+  <script src="../js/boot.js" data-page="course"></script>
+</body>
+</html>

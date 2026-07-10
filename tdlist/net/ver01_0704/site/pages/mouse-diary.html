@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="鼠の事件簿 — 备忘、更新计划与更新公告 · Alstr（Call Sign ☘ VLinv）">
+  <title>鼠の事件簿 · Alstr（Call Sign ☘ VLinv）</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <img class="page-bg-image" src="../static/image/image01.jpg" alt="">
+    <div class="page-bg-overlay"></div>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="主导航">
+      <a class="nav-brand" href="../index.html">
+        <span class="nav-brand-text">Alstr<span class="call-sign">（Call Sign ☘ VLinv）</span></span>
+        <span class="nav-version">v0.10.0</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="course.html">课程</a></li>
+        <li><a href="agent-lab.html">智能体试验</a></li>
+        <li><a href="virtual-arrange.html">虚拟编曲</a></li>
+        <li><a href="mouse-diary.html" class="is-active">鼠の事件簿</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon btn-icon--trail is-active" id="cursor-trail-toggle" type="button" aria-label="关闭红叶李拖尾效果" aria-pressed="true" title="红叶李拖尾：开">✿</button>
+        <button class="btn-icon" id="theme-toggle" type="button" aria-label="切换主题" title="切换主题">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-layout module-page">
+    <nav class="breadcrumb" aria-label="面包屑">
+      <a href="../index.html">首页</a>
+      <span aria-hidden="true">/</span>
+      <span>鼠の事件簿</span>
+    </nav>
+
+    <header class="module-header module-header--diary">
+      <span class="module-icon" aria-hidden="true"><img class="flower-icon flower-icon--lg" src="../static/icons/flower-world.svg" alt=""></span>
+      <div>
+        <h1>鼠の事件簿</h1>
+        <p>随手备忘、更新计划、更新公告与心情贴——不必正式，但要留痕。</p>
+      </div>
+    </header>
+
+    <div class="diary-module-tabs" role="tablist" aria-label="事件簿模块">
+      <button type="button" class="diary-module-tab is-active" data-diary-tab="memo" role="tab" aria-selected="true">随手备忘</button>
+      <button type="button" class="diary-module-tab" data-diary-tab="plan" role="tab" aria-selected="false">更新计划</button>
+      <button type="button" class="diary-module-tab" data-diary-tab="announce" role="tab" aria-selected="false">更新公告</button>
+      <button type="button" class="diary-module-tab" data-diary-tab="mood" role="tab" aria-selected="false">心情贴</button>
+    </div>
+
+    <section class="module-section diary-workspace" id="diary-workspace">
+      <p class="muted diary-storage-hint" id="diary-storage-mode">检测存储方式中…</p>
+
+      <!-- 随手备忘 -->
+      <div class="diary-panel" id="diary-panel-memo" data-diary-panel="memo">
+        <div class="diary-workspace__head">
+          <h2>随手备忘</h2>
+          <p class="muted">支持文字与语音混合输入，收藏优先排序</p>
+        </div>
+
+        <div class="diary-composer" id="diary-composer">
+          <div class="diary-composer__toolbar">
+            <label class="diary-field">
+              <span class="diary-field__label">标题（可选）</span>
+              <input type="text" id="diary-title-input" class="diary-input" placeholder="不填则自动取首行或时间">
+            </label>
+            <label class="diary-field">
+              <span class="diary-field__label">存入栏目</span>
+              <select id="diary-save-category" class="diary-select">
+                <option value="备忘" selected>备忘</option>
+                <option value="闲聊">闲聊</option>
+                <option value="碎碎念">碎碎念</option>
+              </select>
+            </label>
+          </div>
+          <div class="diary-composer__main">
+            <div class="diary-composer__input-wrap">
+              <label class="diary-field diary-field--grow" for="diary-composer-input">
+                <span class="diary-field__label">文字输入</span>
+                <textarea id="diary-composer-input" class="diary-textarea" rows="5" placeholder="直接打字，或与麦克风混用…"></textarea>
+              </label>
+              <button type="button" class="btn btn-ghost diary-mic-btn" id="diary-mic-toggle" aria-pressed="false">🎤 麦克风</button>
+            </div>
+            <div class="diary-live-panel">
+              <h3 class="diary-live-panel__title">实时内容</h3>
+              <div class="diary-live-preview" id="diary-live-preview" aria-live="polite">
+                <p class="diary-preview-placeholder muted">输入文字或开启麦克风，内容将实时显示在这里…</p>
+              </div>
+            </div>
+          </div>
+          <div class="diary-composer__actions">
+            <button type="button" class="btn btn-primary" id="diary-save-btn">存入栏目</button>
+            <button type="button" class="btn btn-ghost" id="diary-clear-btn">清空</button>
+            <span class="diary-status muted" id="diary-status" role="status"></span>
+          </div>
+        </div>
+
+        <div class="diary-list-section">
+          <div class="diary-list__head">
+            <h3>已存备忘</h3>
+          </div>
+          <div class="diary-filter-bar" id="diary-filter-bar" role="tablist" aria-label="栏目筛选">
+            <button type="button" class="diary-filter-btn is-active" data-filter="全部" role="tab">全部</button>
+            <button type="button" class="diary-filter-btn" data-filter="备忘" role="tab">备忘</button>
+            <button type="button" class="diary-filter-btn" data-filter="闲聊" role="tab">闲聊</button>
+            <button type="button" class="diary-filter-btn" data-filter="碎碎念" role="tab">碎碎念</button>
+          </div>
+          <div class="diary-memo-list" id="diary-memo-list">
+            <p class="diary-empty muted">加载中…</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 更新计划 -->
+      <div class="diary-panel" id="diary-panel-plan" data-diary-panel="plan" hidden>
+        <div class="diary-workspace__head">
+          <h2>更新计划</h2>
+          <p class="muted">记录未来将要更新的内容 · 收藏优先，按计划时间排序</p>
+        </div>
+
+        <div class="diary-composer diary-composer--plan">
+          <div class="diary-composer__toolbar">
+            <label class="diary-field">
+              <span class="diary-field__label">标题（可选）</span>
+              <input type="text" id="plan-title-input" class="diary-input" placeholder="例：课程模块 v0.11">
+            </label>
+            <label class="diary-field">
+              <span class="diary-field__label">计划时间</span>
+              <input type="datetime-local" id="plan-date-input" class="diary-input">
+            </label>
+          </div>
+          <label class="diary-field diary-field--grow" for="plan-content-input">
+            <span class="diary-field__label">计划内容</span>
+            <textarea id="plan-content-input" class="diary-textarea" rows="6" placeholder="描述未来计划更新的功能、模块或内容…"></textarea>
+          </label>
+          <div class="diary-composer__actions">
+            <button type="button" class="btn btn-primary" id="plan-save-btn">保存计划</button>
+            <button type="button" class="btn btn-ghost" id="plan-clear-btn">清空</button>
+            <span class="diary-status muted" id="plan-status" role="status"></span>
+          </div>
+        </div>
+
+        <div class="diary-list-section">
+          <div class="diary-list__head">
+            <h3>计划列表</h3>
+          </div>
+          <div class="diary-memo-list" id="plan-list">
+            <p class="diary-empty muted">加载中…</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 更新公告 -->
+      <div class="diary-panel" id="diary-panel-announce" data-diary-panel="announce" hidden>
+        <div class="diary-workspace__head">
+          <h2>更新公告</h2>
+          <p class="muted">发布已完成的更新 · 时间自动记录 · 首页滑动展示</p>
+        </div>
+
+        <div class="diary-composer diary-composer--announce">
+          <label class="diary-field">
+            <span class="diary-field__label">标题（可选）</span>
+            <input type="text" id="announce-title-input" class="diary-input" placeholder="不填则自动生成带时间的标题">
+          </label>
+          <label class="diary-field diary-field--grow" for="announce-content-input">
+            <span class="diary-field__label">公告内容</span>
+            <textarea id="announce-content-input" class="diary-textarea" rows="6" placeholder="写入本次更新的详细说明…"></textarea>
+          </label>
+          <div class="diary-composer__actions">
+            <button type="button" class="btn btn-primary" id="announce-save-btn">发布公告</button>
+            <button type="button" class="btn btn-ghost" id="announce-clear-btn">清空</button>
+            <span class="diary-status muted" id="announce-status" role="status"></span>
+          </div>
+        </div>
+
+        <div class="diary-list-section">
+          <div class="diary-list__head">
+            <h3>公告列表</h3>
+            <p class="muted">收藏优先，按发布时间倒序</p>
+          </div>
+          <div class="diary-memo-list" id="announce-list">
+            <p class="diary-empty muted">加载中…</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 心情贴 -->
+      <div class="diary-panel" id="diary-panel-mood" data-diary-panel="mood" hidden>
+        <div class="diary-workspace__head">
+          <h2>心情贴</h2>
+          <p class="muted">50 字以内 · 自动记录时间 · 可指定在首页事件板展示</p>
+        </div>
+
+        <div class="diary-composer diary-composer--mood">
+          <label class="diary-field diary-field--grow" for="mood-content-input">
+            <span class="diary-field__label">心情内容</span>
+            <textarea id="mood-content-input" class="diary-textarea diary-textarea--mood" rows="3" maxlength="50" placeholder="今天想说的一句话…"></textarea>
+          </label>
+          <div class="mood-compose-meta">
+            <span class="mood-char-count muted" id="mood-char-count">0 / 50</span>
+            <label class="mood-featured-check">
+              <input type="checkbox" id="mood-featured-input">
+              <span>发布后在首页事件板展示</span>
+            </label>
+          </div>
+          <div class="diary-composer__actions">
+            <button type="button" class="btn btn-primary" id="mood-save-btn">贴一条</button>
+            <button type="button" class="btn btn-ghost" id="mood-clear-btn">清空</button>
+            <span class="diary-status muted" id="mood-status" role="status"></span>
+          </div>
+        </div>
+
+        <div class="diary-list-section">
+          <div class="diary-list__head">
+            <h3>已贴心情</h3>
+            <p class="muted">按时间倒序 · 可指定一条在首页展示，否则显示最新一条</p>
+          </div>
+          <div class="diary-mood-list" id="mood-list">
+            <p class="diary-empty muted">加载中…</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="diary-detail-dialog" id="diary-detail-dialog">
+      <article class="diary-detail">
+        <header class="diary-detail__head">
+          <h2 id="diary-detail-title"></h2>
+          <button type="button" class="btn-icon" id="diary-detail-close" aria-label="关闭">✕</button>
+        </header>
+        <div class="diary-detail__meta" id="diary-detail-meta"></div>
+        <div class="diary-detail__body" id="diary-detail-body"></div>
+      </article>
+    </dialog>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Alstr（Call Sign ☘ VLinv）· v0.10.0</p>
+  </footer>
+
+  <script src="../js/boot.js" data-page="mouse-diary"></script>
+</body>
+</html>

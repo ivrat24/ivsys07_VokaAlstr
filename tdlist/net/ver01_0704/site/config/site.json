@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "title": "Alstr（Call Sign ☘ VLinv）",
+    "subtitle": "课程 · 智能体试验 · 虚拟编曲 · 鼠の事件簿",
+    "author": "Alstr（Call Sign ☘ VLinv）",
+    "callSign": "（Call Sign ☘ VLinv）",
+    "version": "0.10.0",
+    "build": "ver01_0704",
+    "language": "zh-CN",
+    "created": "2026-07-04"
+  },
+  "background": {
+    "image": "static/image/image01.jpg",
+    "source": "../../../static/image/image01.jpg",
+    "fit": "cover",
+    "position": "center"
+  },
+  "quartzCompat": {
+    "enabled": true,
+    "contentDir": "content",
+    "contentDirs": {
+      "home": "content/home",
+      "course": "note_content",
+      "agent-lab": "content/agent-lab",
+      "virtual-arrange": "content/virtual-arrange",
+      "mouse-diary": "content/mouse-diary"
+    },
+    "noteContent": {
+      "sourceDir": "note_content",
+      "manifest": "note_content/manifest.json",
+      "outputDir": "pages/notes",
+      "buildScript": "sync/build-notes.py"
+    },
+    "defaultDateType": "modified",
+    "features": {
+      "graph": { "enabled": false, "planned": true },
+      "backlinks": { "enabled": false, "planned": true },
+      "tags": { "enabled": true, "planned": true },
+      "search": { "enabled": false, "planned": true },
+      "moc": { "enabled": false, "planned": true }
+    }
+  },
+  "zones": [
+    {
+      "id": "course",
+      "label": "课程",
+      "icon": "static/icons/flower-course.svg",
+      "contentType": "markdown",
+      "contentDir": "note_content"
+    },
+    {
+      "id": "agent-lab",
+      "label": "智能体试验",
+      "icon": "static/icons/flower-agent.svg",
+      "contentType": "agent",
+      "contentDir": "content/agent-lab",
+      "description": "AI agent 的一些研究与小成品。"
+    },
+    {
+      "id": "virtual-arrange",
+      "label": "虚拟编曲",
+      "icon": "static/icons/flower-arrange.svg",
+      "contentType": "voice",
+      "contentDir": "content/virtual-arrange",
+      "description": [
+        "术曲编辑初稿：上传与管理 Cevio AI 相关术曲工程的编辑初稿。",
+        "虚拟编曲工具：调用自建的虚拟编曲 AI 工具，完成试音与编配实验。"
+      ],
+      "planned": true
+    },
+    {
+      "id": "mouse-diary",
+      "label": "鼠の事件簿",
+      "icon": "static/icons/flower-world.svg",
+      "contentType": "markdown",
+      "contentDir": "content/mouse-diary",
+      "description": "消息公示、事务备忘、闲聊与碎碎念的随手记录本。"
+    }
+  ],
+  "vokaExtensions": {
+    "live2d": { "enabled": false, "planned": true },
+    "aiAgent": { "enabled": false, "planned": true },
+    "taskBoard": { "enabled": false, "planned": true },
+    "githubSync": { "enabled": true },
+    "pluginSlots": []
+  },
+  "navigation": [
+    { "id": "home", "label": "首页" },
+    { "id": "course", "label": "课程" },
+    { "id": "agent-lab", "label": "智能体试验" },
+    { "id": "virtual-arrange", "label": "虚拟编曲" },
+    { "id": "mouse-diary", "label": "鼠の事件簿" },
+    { "id": "sync", "label": "同步", "href": "#sync" }
+  ],
+  "github": {
+    "pagesBranch": "main",
+    "pagesPath": "/",
+    "repoNameSuggestion": "voka-home"
+  },
+  "theme": {
+    "default": "dark",
+    "accent": "#b4c3ff",
+    "font": "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  },
+  "musicPlayer": {
+    "enabled": true,
+    "playlistDir": "static/music",
+    "playlistFile": "static/music/playlist.json",
+    "coverImage": "static/image/image02.jpg",
+    "playModes": ["sequential", "shuffle", "single", "loop"],
+    "connected": true
+  }
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alstr（Call Sign ☘ VLinv）个人主页 — 课程、智能体试验、虚拟编曲与鼠の事件簿">
+  <title>Alstr（Call Sign ☘ VLinv）· 个人主页</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="js/site-offline.bundle.js" as="script">
+  <link rel="prefetch" href="pages/course.html">
+  <link rel="prefetch" href="pages/agent-lab.html">
+  <link rel="prefetch" href="pages/virtual-arrange.html">
+  <link rel="prefetch" href="pages/mouse-diary.html">
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <img class="page-bg-image" src="static/image/image01.jpg" alt="">
+    <div class="page-bg-overlay"></div>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="主导航">
+      <a class="nav-brand" href="index.html">
+        <span class="nav-brand-text">Alstr<span class="call-sign">（Call Sign ☘ VLinv）</span></span>
+        <span class="nav-version">v0.10.0</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="is-active">首页</a></li>
+        <li><a href="pages/course.html">课程</a></li>
+        <li><a href="pages/agent-lab.html">智能体试验</a></li>
+        <li><a href="pages/virtual-arrange.html">虚拟编曲</a></li>
+        <li><a href="pages/mouse-diary.html">鼠の事件簿</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon btn-icon--trail is-active" id="cursor-trail-toggle" type="button" aria-label="关闭红叶李拖尾效果" aria-pressed="true" title="红叶李拖尾：开">✿</button>
+        <button class="btn-icon" id="theme-toggle" type="button" aria-label="切换主题" title="切换主题">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-layout main-layout--home">
+    <section id="home" class="section hero">
+      <div class="hero-panel">
+        <div class="hero-intro-row">
+          <div class="hero-text-box hero-text-box--intro">
+            <p class="hero-badge">v0.10.0 · 持续建设中</p>
+            <h1 class="hero-title">Alstr<span class="call-sign call-sign--hero">（Call Sign ☘ VLinv）</span></h1>
+            <p class="hero-subtitle">课程 · 智能体试验 · 虚拟编曲 · 鼠の事件簿</p>
+            <p class="hero-desc">Growing~Glowing~</p>
+          </div>
+          <div class="hero-side-column">
+            <div class="hero-side-module hero-side-module--events" id="hero-mood-board">
+              <span class="hero-text-box-label">事件板 · 心情贴</span>
+              <div class="hero-mood-body" id="hero-mood-body">
+                <p class="hero-side-placeholder">加载中…</p>
+              </div>
+            </div>
+            <div class="hero-side-module hero-side-module--music" aria-live="polite">
+              <span class="hero-text-box-label">音乐</span>
+              <p class="hero-now-status" id="hero-now-status">待机 · 未播放</p>
+              <p class="hero-now-track" id="hero-now-track">未连接歌单</p>
+              <p class="hero-now-time" id="hero-now-time">0:00 / 0:00</p>
+              <div class="hero-now-progress-bar" aria-hidden="true">
+                <div class="hero-now-progress-fill" id="hero-now-progress-fill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-ghost" href="pages/course.html"><img class="flower-icon" src="static/icons/flower-course.svg" alt="" aria-hidden="true">课程</a>
+          <a class="btn btn-ghost" href="pages/agent-lab.html"><img class="flower-icon" src="static/icons/flower-agent.svg" alt="" aria-hidden="true">智能体试验</a>
+          <a class="btn btn-ghost" href="pages/virtual-arrange.html"><img class="flower-icon" src="static/icons/flower-arrange.svg" alt="" aria-hidden="true">虚拟编曲</a>
+          <a class="btn btn-ghost" href="pages/mouse-diary.html"><img class="flower-icon" src="static/icons/flower-world.svg" alt="" aria-hidden="true">鼠の事件簿</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="home-updates-section" class="section home-updates-section" hidden>
+      <div class="section-head home-updates-head">
+        <div>
+          <h2>更新公告</h2>
+          <p class="section-lead">站点最新动态，来自鼠の事件簿</p>
+        </div>
+        <div class="home-updates-nav" aria-hidden="false">
+          <button type="button" class="btn-icon home-updates-arrow" data-carousel="prev" aria-label="上一条">‹</button>
+          <div class="home-updates-dots" id="home-updates-dots" role="tablist" aria-label="公告切换"></div>
+          <button type="button" class="btn-icon home-updates-arrow" data-carousel="next" aria-label="下一条">›</button>
+        </div>
+      </div>
+      <div class="home-updates-carousel" id="home-updates-carousel">
+        <div class="home-updates-track" id="home-updates-track"></div>
+      </div>
+      <p class="home-updates-foot muted">
+        <a href="pages/mouse-diary.html">在事件簿中管理公告 →</a>
+      </p>
+    </section>
+
+    <section id="zones" class="section zones-section">
+      <div class="section-head">
+        <h2>功能分区</h2>
+      </div>
+
+      <div class="zone-grid">
+        <article id="course" class="zone-card zone-card--course">
+          <a class="zone-card-hit" href="pages/course.html" aria-label="进入课程"></a>
+          <div class="zone-icon" aria-hidden="true"><img class="flower-icon" src="static/icons/flower-course.svg" alt=""></div>
+          <div class="zone-body">
+            <h3>课程笔记</h3>
+            <p>Quartz 风格 Markdown 笔记：放入 <code>note_content/</code> 后自动生成独立网页。</p>
+            <ul class="zone-list" id="course-list">
+              <li class="zone-placeholder">加载中…</li>
+            </ul>
+            <a class="zone-link" href="pages/course.html">进入课程 →</a>
+          </div>
+        </article>
+
+        <article id="agent-lab" class="zone-card zone-card--agents">
+          <a class="zone-card-hit" href="pages/agent-lab.html" aria-label="进入智能体试验"></a>
+          <div class="zone-icon" aria-hidden="true"><img class="flower-icon" src="static/icons/flower-agent.svg" alt=""></div>
+          <div class="zone-body">
+            <h3>智能体试验</h3>
+            <p>AI agent 的一些研究与小成品。</p>
+            <ul class="zone-list">
+              <li><span class="zone-status zone-status--active">进行中</span> 最新更新情报</li>
+              <li><span class="zone-status zone-status--planned">规划中</span> 模块展示</li>
+            </ul>
+            <a class="zone-link" href="pages/agent-lab.html">进入试验区 →</a>
+          </div>
+        </article>
+
+        <article id="virtual-arrange" class="zone-card zone-card--arrange">
+          <a class="zone-card-hit" href="pages/virtual-arrange.html" aria-label="进入虚拟编曲"></a>
+          <div class="zone-icon" aria-hidden="true"><img class="flower-icon" src="static/icons/flower-arrange.svg" alt=""></div>
+          <div class="zone-body">
+            <h3>虚拟编曲</h3>
+            <div class="zone-desc-lines">
+              <p>术曲编辑初稿：上传与管理 Cevio AI 相关术曲工程的编辑初稿。</p>
+              <p>虚拟编曲工具：调用自建的虚拟编曲 AI 工具，完成试音与编配实验。</p>
+            </div>
+            <ul class="zone-list">
+              <li><span class="zone-status zone-status--active">进行中</span> 术曲初稿上传入口</li>
+              <li><span class="zone-status zone-status--planned">规划中</span> Cevio AI 工程版本管理</li>
+              <li><span class="zone-status zone-status--planned">规划中</span> 虚拟编曲 AI 工具集成面板</li>
+            </ul>
+            <a class="zone-link" href="pages/virtual-arrange.html">进入虚拟编曲 →</a>
+          </div>
+        </article>
+
+        <article id="mouse-diary" class="zone-card zone-card--diary">
+          <a class="zone-card-hit" href="pages/mouse-diary.html" aria-label="进入鼠の事件簿"></a>
+          <div class="zone-icon" aria-hidden="true"><img class="flower-icon" src="static/icons/flower-world.svg" alt=""></div>
+          <div class="zone-body">
+            <h3>鼠の事件簿</h3>
+            <p>随手备忘、更新计划与更新公告的记录本。</p>
+            <ul class="zone-list">
+              <li><span class="zone-tag">备忘</span> 待办与跟进记录</li>
+              <li><span class="zone-tag">计划</span> 未来更新预告</li>
+              <li><span class="zone-tag">公告</span> 首页滑动展示</li>
+            </ul>
+            <a class="zone-link" href="pages/mouse-diary.html">打开事件簿 →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sync" class="section sync-section">
+      <div class="sync-panel">
+        <div>
+          <h2>GitHub 同步</h2>
+          <p class="section-lead">将本地建设内容推送到 GitHub 仓库，并通过 GitHub Pages 发布站点。</p>
+        </div>
+        <button class="btn btn-primary" id="open-sync-btn" type="button">打开同步窗口</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Alstr（Call Sign ☘ VLinv）· v0.10.0 · tdlist/net/ver01_0704</p>
+  </footer>
+
+  <dialog id="home-update-dialog" class="home-update-dialog diary-detail-dialog">
+    <article class="diary-detail home-update-detail">
+      <header class="diary-detail__head">
+        <h2 id="home-update-dialog-title"></h2>
+        <button type="button" class="btn-icon" id="home-update-dialog-close" aria-label="关闭">✕</button>
+      </header>
+      <div class="diary-detail__meta" id="home-update-dialog-meta"></div>
+      <div class="diary-detail__body" id="home-update-dialog-body"></div>
+    </article>
+  </dialog>
+
+  <dialog id="github-sync-dialog" class="sync-dialog" aria-labelledby="sync-dialog-title">
+    <form id="github-sync-form" method="dialog">
+      <header class="dialog-header">
+        <h2 id="sync-dialog-title">GitHub 同步</h2>
+        <button class="btn-icon dialog-close" type="button" id="close-sync-dialog" aria-label="关闭">×</button>
+      </header>
+
+      <div class="dialog-body">
+        <p class="dialog-hint">
+          填写 GitHub 账号信息以同步并发布站点。
+          <strong>注意：</strong>Git 操作需使用
+          <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Personal Access Token</a>
+          （勾选 <code>repo</code> 权限），密码栏请填入 Token。
+        </p>
+
+        <label class="field">
+          <span>GitHub 用户名</span>
+          <input type="text" id="gh-username" name="username" autocomplete="username" required placeholder="your-username">
+        </label>
+
+        <label class="field">
+          <span>密码 / Personal Access Token</span>
+          <input type="password" id="gh-password" name="password" autocomplete="current-password" required placeholder="ghp_xxxxxxxxxxxx">
+        </label>
+
+        <label class="field">
+          <span>仓库名称</span>
+          <input type="text" id="gh-repo" name="repo" value="voka-home" placeholder="voka-home 或 username.github.io">
+        </label>
+
+        <label class="field checkbox-field">
+          <input type="checkbox" id="gh-create-repo" name="createRepo" checked>
+          <span>若仓库不存在则自动创建（需 Token 含 repo 权限）</span>
+        </label>
+
+        <label class="field checkbox-field">
+          <input type="checkbox" id="gh-enable-pages" name="enablePages" checked>
+          <span>启用 GitHub Pages（从 main 分支根目录发布）</span>
+        </label>
+
+        <div id="sync-status" class="sync-status" role="status" aria-live="polite"></div>
+      </div>
+
+      <footer class="dialog-footer">
+        <button class="btn btn-ghost" type="button" id="cancel-sync">取消</button>
+        <button class="btn btn-primary" type="submit" id="submit-sync">同步并发布</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <script src="js/boot.js" data-page="home"></script>
+</body>
+</html>

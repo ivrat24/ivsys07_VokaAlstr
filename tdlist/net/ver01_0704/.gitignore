@@ -1,0 +1,8 @@
+# 凭据与本地状态（切勿提交）
+sync/.credentials
+sync/*.local.json
+.env
+*.log
+
+# 本地预览
+.sync-server.pid

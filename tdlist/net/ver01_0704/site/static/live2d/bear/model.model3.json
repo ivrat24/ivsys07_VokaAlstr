@@ -1,0 +1,34 @@
+{
+  "Version": 3,
+  "FileReferences": {
+    "Moc": "model.moc3",
+    "Textures": [
+      "textures/texture_00.png"
+    ],
+    "Physics": "model.physics3.json",
+    "Expressions": [
+      {
+        "Name": "nowatermark",
+        "File": "expressions/nowatermark.exp3.json"
+      }
+    ]
+  },
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "LipSync",
+      "Ids": [
+        "ParamMouthForm2",
+        "ParamMouthOpenY"
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": [
+        "ParamEyeLOpen",
+        "ParamEyeROpen"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="虚拟编曲 — Alstr（Call Sign ☘ VLinv）">
+  <title>虚拟编曲 · Alstr（Call Sign ☘ VLinv）</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <img class="page-bg-image" src="../static/image/image01.jpg" alt="">
+    <div class="page-bg-overlay"></div>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="主导航">
+      <a class="nav-brand" href="../index.html">
+        <span class="nav-brand-text">Alstr<span class="call-sign">（Call Sign ☘ VLinv）</span></span>
+        <span class="nav-version">v0.10.0</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">首页</a></li>
+        <li><a href="course.html">课程</a></li>
+        <li><a href="agent-lab.html">智能体试验</a></li>
+        <li><a href="virtual-arrange.html" class="is-active">虚拟编曲</a></li>
+        <li><a href="mouse-diary.html">鼠の事件簿</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon btn-icon--trail is-active" id="cursor-trail-toggle" type="button" aria-label="关闭红叶李拖尾效果" aria-pressed="true" title="红叶李拖尾：开">✿</button>
+        <button class="btn-icon" id="theme-toggle" type="button" aria-label="切换主题" title="切换主题">◐</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-layout module-page">
+    <nav class="breadcrumb" aria-label="面包屑">
+      <a href="../index.html">首页</a>
+      <span aria-hidden="true">/</span>
+      <span>虚拟编曲</span>
+    </nav>
+
+    <header class="module-header module-header--arrange">
+      <span class="module-icon" aria-hidden="true"><img class="flower-icon flower-icon--lg" src="../static/icons/flower-arrange.svg" alt=""></span>
+      <div>
+        <h1>虚拟编曲</h1>
+        <div class="module-intro-notes">
+          <p>☘ 此页用于存储一些虚拟编曲试验品</p>
+          <p>☘ 包括但不限于一些小工具和半成品的lyrics</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="module-section arrange-showcase" aria-label="编曲试验品展示">
+      <div class="arrange-showcase-shell">
+        <div class="arrange-showcase-head">
+          <span class="arrange-showcase-badge">展示</span>
+          <h2 class="arrange-showcase-title">编曲试验品展示</h2>
+        </div>
+        <div class="arrange-showcase-body">
+          <p class="arrange-showcase-placeholder">待填入</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="module-section arrange-instruments">
+      <div class="piano-module-body is-loading" id="keyboard-piano" aria-label="钢琴键盘"></div>
+      <div class="piano-module-body is-loading" id="keyboard-guitar" aria-label="吉他键盘"></div>
+      <div class="piano-module-body is-loading" id="drum-kit" aria-label="鼓组"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Alstr（Call Sign ☘ VLinv）· v0.10.0</p>
+  </footer>
+
+  <script src="../js/boot.js" data-page="virtual-arrange"></script>
+</body>
+</html>
